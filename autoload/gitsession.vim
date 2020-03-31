@@ -1,8 +1,8 @@
 " =============================================================================
-" File: git-session.vim
+" File: gitsession.vim
 " Description: A 'git-aware' session-manager for Vim.
 " Mantainer: Chris Allen Lane (https://chris-allen-lane.com)
-" Url: https://github.com/chrisallenlane/vim-git-session.vim
+" Url: https://github.com/chrisallenlane/vim-git-session
 " License: MIT
 " Version: 1.0.0
 " Last Changed: March 28, 2020
