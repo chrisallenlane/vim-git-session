@@ -1,6 +1,6 @@
 " =============================================================================
 " File: git-session.vim
-" Description: TODO
+" Description: A 'git-aware' session-manager for Vim.
 " Mantainer: Chris Allen Lane (https://chris-allen-lane.com)
 " Url: https://github.com/chrisallenlane/vim-git-session.vim
 " License: MIT
