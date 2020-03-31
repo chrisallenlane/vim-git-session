@@ -1,0 +1,157 @@
+*vim-git-session.txt*   A git-aware session manager
+
+                               vim-git-session
+                                     ~
+                              Reference Manual
+
+
+==============================================================================
+CONTENTS                                            *vim-git-session-contents*
+
+    1. Overview ..............................|vim-git-session-overview|
+    2. Example ...............................|vim-git-session-example|
+    3. Installation ..........................|vim-git-session-installation|
+    4. Functions .............................|vim-git-session-functions|
+    5. Options ...............................|vim-git-session-options|
+    6. Config ................................|vim-git-session-config|
+    7. Changelog .............................|vim-git-session-changelog| 
+    8. Contributing ..........................|vim-git-session-contributing|
+
+
+==============================================================================
+1. Overview                                         *vim-git-session-overview*
+
+
+
+`vim-git-session` wraps |mksession| and |source| to provide a mechanism for
+creating |sessions| that map to the branches of a git repository. This can be
+useful when working among several topic branches simultaneously.
+
+Session files will be named according to the following pattern:
+
+  <session-dir>/<repo>-<branch>.vim
+
+The value of <session-dir> must be configured via `gitsession_session_dir`.
+(See |vim-git-session-config|.)
+
+
+==============================================================================
+2. Example                                           *vim-git-session-example*
+
+
+
+Assume that you're developing a feature on the `feat-foo` branch when you
+receive a high-priority bug report. `vim-git-session` allows you to do the
+following:
+
+1. Run `:Save`. This will deterministically generate a name for your session,
+   and save the file to a configured location. (`:Save` must first be mapped in
+   your |vimrc|. See |vim-git-session-config|.)
+
+2. `git checkout` a bugfix branch, and fix the bug. (You may want to `:Save`
+   this session as well.)
+
+3. With the bug fixed, resume feature-development: `git checkout feat-foo`,
+   launch `vim`, and run `:Load`. Your initial session will reopen. (`:Load`
+   must likewise be configured before use.)
+
+Of course, the above can be accomplished without a plugin, but
+`vim-git-session` removes the burden of manually managing session files. You
+need simply remember `:Save` and `:Load`. (`:Remove` is also available should
+you want to delete a session.)
+
+
+==============================================================================
+3. Installation                                 *vim-git-session-installation*
+
+
+
+`vim-git-session` can be installed as described in |packages|, or by using a
+package manager like Pathogen, Vundle, or Plug.
+
+
+==============================================================================
+4. Functions                                       *vim-git-session-functions*
+
+
+
+`gitsession#save`                                            *gitsession#save*
+
+Save a session for the current branch. It's recommended that you map this
+function to a convenient command:
+
+  `command Save :call gitsession#save()`
+
+
+`gitsession#load`                                            *gitsession#load*
+
+Load a session for the current branch. It's recommended that you map this
+function to a convenient command:
+
+  `command Load :call gitsession#load()`
+
+
+`gitsession#remove`                                        *gitsession:remove*
+
+Remove the session associated with the current branch. It's recommended that
+you map this function to a convenient command:
+
+  `command Remove :call gitsession#remove()`
+
+
+==============================================================================
+5. Options                                           *vim-git-session-options*
+
+
+
+`gitsession_session_dir`                           *g:gitsession_session_dir* 
+The directory into which session files will be saved. This directory must
+exist - it will not be created automatically. This option must be set, and has
+no default value.
+
+
+==============================================================================
+6. Config                                             *vim-git-session-config*
+
+
+
+Here's a practical configuration example. Add these lines to your |vimrc|:
+
+  `" The path at which your session files should be stored. This directory must`
+  `" exist - it will not be created by the plugin`
+  `let g:gitsession_session_dir=~/.vim/session`
+
+  `" map commands to save, load, and remove sessions`
+  `command Save :call gitsession#save()`
+  `command Load :call gitsession#load()`
+  `command Remove :call gitsession#remove()`
+
+
+==============================================================================
+7. Changelog                                       *vim-git-session-changelog*
+
+
+
+* v1.0.0: Initial release
+
+
+==============================================================================
+8. Contributing                                 *vim-git-session-contributing*
+
+
+
+If you would like to contribute to the development of this plugin, please fork
+its repository on Github and open a pull-request:
+
+  https://github.com/chrisallenlane/vim-git-session
+
+If you would like to report a bug or make a feature request, please do so in
+the Github issue tracker:
+
+  https://github.com/chrisallenlane/vim-git-session/issues
+
+You may also contact the author of this plugin directly:
+
+  Chris Allen Lane <chris@chris-allen-lane.com>
+
+vim:tw=78:ts=8:noet:ft=help:norl:
