@@ -91,7 +91,7 @@ function to a convenient command:
   `command Load :call gitsession#load()`
 
 
-`gitsession#remove`                                        *gitsession:remove*
+`gitsession#remove`                                        *gitsession#remove*
 
 Remove the session associated with the current branch. It's recommended that
 you map this function to a convenient command:
