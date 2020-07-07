@@ -126,6 +126,10 @@ Here's a practical configuration example. Add these lines to your |vimrc|:
   `command Load :call gitsession#load()`
   `command Remove :call gitsession#remove()`
 
+It is also recommended to disinclude `folds` from your `sessionoptions` in
+order to prevent "fold not found" errors from being thrown:
+
+  `set sessionoptions=buffers,curdir,globals,help,tabpages,winsize`
 
 ==============================================================================
 7. Changelog                                       *vim-git-session-changelog*

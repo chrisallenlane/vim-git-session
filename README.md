@@ -48,6 +48,13 @@ command Load :call gitsession#load()
 command Remove :call gitsession#remove()
 ```
 
+It is also recommended to disinclude `folds` from your `sessionoptions` in
+order to prevent "fold not found" errors from being thrown:
+
+```vim
+set sessionoptions=buffers,curdir,globals,help,tabpages,winsize
+```
+
 View [the plugin documentation][doc] for more information.
 
 [doc]: ./doc/vim-git-session.txt
